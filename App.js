@@ -40,7 +40,7 @@
 
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { Container, Header, Body,Title,Content,Input,Item,Button } from 'native-base';
+import { Container, Header, Body,Title,Content,Input,Item,Button, Thumbnail, Tab, Tabs, ScrollableTab } from 'native-base';
 import * as Font  from "expo-font";
 import {Ionicons} from '@expo/vector-icons';
 export default class App extends React.Component  {
@@ -68,11 +68,7 @@ export default class App extends React.Component  {
          <Title style={styles.watchFaceContainer}>UI Garage Twitter</Title>
        </Body>
      </Header>
-     <Content>
-        {/* <View ><Text>Username:</Text></View>
-         <Item rounded>
-         <Input placeholder='Username' />
-       </Item> */}
+     {/* <Content>
        <View style={styles.username}>
          <Text style={styles.space}>Username:</Text>
            <Item rounded>
@@ -85,15 +81,61 @@ export default class App extends React.Component  {
        </Item>
        <Button style={styles.space} primary onPress= {this.handleSubmit}><Text style={styles.button}> Submit </Text>
        </Button>
-     </Content>
+     </Content> */}
+    <Content>
+      <View>
+      <Thumbnail style={styles.space} large source={{uri:  'https://1.gravatar.com/avatar/1fbda2e908b67417796dd49920df93e6?s=256&d=identicon&r=G'}} />
+      </View>
+      <View style={styles.roww}>
+        <Text style={styles.namespace} >Nishu Goel</Text>
+        <Button style={styles.editBtn}><Text style={styles.editBtnText}>Edit Profile</Text></Button>
+      </View>  
+        <View>
+        <Text>@DcoustaWilson</Text>
+        </View>
+        <View>
+        <Text style={styles.space}>Bio:</Text>
+        <Text>Practicing at UI Garage, IBM | Angular | VSO Volunteer</Text>
+        </View>
+        <View style={styles.roww}>
+        <Thumbnail small source={{uri: 'https://png.pngtree.com/png-vector/20190115/ourmid/pngtree-vector-location-icon-png-image_317888.jpg'}} />
+        <Text style={styles.leftmr}>Bengaluru, India</Text>
+      </View>
+       {/* <View style={styles.hrborder} /> */}
+
+       <View style={styles.tabstyle} hasTabs/>
+       <Tabs renderTabBar={()=> <ScrollableTab />}>
+          <Tab heading="Tweets">
+          <View style={styles.roww}><Thumbnail small source={{uri:  'https://1.gravatar.com/avatar/1fbda2e908b67417796dd49920df93e6?s=256&d=identicon&r=G'}} />
+          <Text style={styles.leftmr}>Nishu Goel</Text>
+          </View>  
+            <View><Text>
+            “Network-aware Preloading Strategy for Angular Lazy Loading” by @laco2net https://link.medium.com/2aS5L0NXAZ #angular #100DaysOfCode
+            </Text></View>
+            <View style={styles.roww}><Thumbnail small source={{uri: 'http://pngimg.com/uploads/ibm/ibm_PNG19653.png'}} />
+            <Text style={styles.leftmr}>You and IBM India</Text>
+            </View>
+            <View><Text>
+            You and IBM India @IBMIndiaJobs Ranjeetha Patil shares the importance of #skill building with the participants at the SheLeads meetup 🌈#SheLeadsWithIBM #TwitterTakeover @reerinsroy
+            </Text></View>
+          </Tab>
+          <Tab heading="Replies">
+          </Tab>
+          <Tab heading="Media">
+          </Tab>
+          <Tab heading="Likes">
+          </Tab>
+          </Tabs>
+    </Content>
    </Container>
    );
  }
 }
 const styles = StyleSheet.create({
  watchFaceContainer:{
- color:"yellow",
+ color:"white",
  marginLeft:100,
+ fontSize: 20
  },
  content:{
   marginTop:30,
@@ -109,5 +151,39 @@ const styles = StyleSheet.create({
  button:{
   color:"yellow",
    marginLeft:150,
+ },
+ editBtn:{
+   marginTop: 20,
+   borderColor: "blue",
+   marginLeft: 70,
+   width: 110
+ },
+ editBtnText:{
+   paddingLeft: 25,
+   color: "white",
+ }, 
+ namespace: {
+  marginTop: 20,
+  fontSize: 30
+ },
+ roww:{
+  flexDirection: 'row'
+ },
+ leftmr:{
+   marginTop: 8,
+   marginLeft: 7,
+   fontSize: 16,
+   fontWeight: 'bold'
+ },
+ hrborder:{
+  marginTop: 20,
+  borderBottomColor: 'blue',
+  borderBottomWidth: 2,
+  width: '100%'
+ },
+ tabstyle:{
+   marginTop: 20,
+   width: '100%'
  }
+
 })
